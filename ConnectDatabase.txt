@@ -1,0 +1,30 @@
+try
+            {
+            string strconn = ConfigurationManager.
+                ConnectionStrings["Demo_DateAccess.Properties.Settings.MusicStoreConnectionString"].ConnectionString;
+            //create object Connection
+            SqlConnection conn = new SqlConnection(strconn);
+            // create object Command
+            SqlCommand cmd = new SqlCommand("SELECT * FROM albums");
+            cmd.Connection = conn;
+            // create DataAdapter
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            dataGridView1.DataSource = dt;
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
+
+<connectionStrings>
+		<add name = "MusicStoreConnectionString"
+			 connectionString="server=localhost;database=MusicStore;Integrated security=true"
+			 />
+	</connectionStrings>
+
+string text = System.IO.File.ReadAllText(@"C:\Users\Public\TestFolder\WriteText.txt");
+string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Public\TestFolder\WriteLines2.txt");
